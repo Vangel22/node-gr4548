@@ -209,3 +209,9 @@ const result = (a, b) => a + b;
 // 2. git add .
 // 3. git commit -m "Initial commit"
 // 4. git push --set-upstream origin main
+
+// 1. git add .
+// Osven ako sakame da izbereme samo eden ili poveke fajlovi da commit-neme
+// *Za taa cel: git add <imeto-na-fajlot>
+// 2. git commit -m "Second commit"
+// 3. git push
