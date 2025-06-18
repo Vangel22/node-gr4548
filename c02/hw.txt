@@ -1,0 +1,11 @@
+- Креирање на модул за конверзија на вредности од еден во друг систем 
+(mi -> km, c -> f, lbs -> kg, ft -> m)
+
+- conversion.js
+function convertMilesToKm(1) -> 1.6
+function convertCelsuisToFahrenheit(param)
+function convertPoundsToKilogram(param)
+funtion convertFeetToMetres(param)
+
+- index.js
+- ovde treba da se koristat
