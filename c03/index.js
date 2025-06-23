@@ -1,4 +1,4 @@
-const fs = require("fs");
+const { readFile, writeFile } = require("./read-write");
 
 // Promises -> ES6
 
@@ -86,48 +86,30 @@ function promisifiedSomeFunction(x, y) {
 //   .catch((err) => console.log(err));
 
 // ES7 - Syntactic sugar upon Promises
-const main = async () => {
-  // then
-  try {
-    const res = await promisifiedSomeFunction(2, 3);
-    console.log(res);
-  } catch (err) {
-    console.log(err);
-  } finally {
-    console.log("Always executing!");
-  }
-};
+// const main = async () => {
+//   // then
+//   try {
+//     const res = await promisifiedSomeFunction(2, 3);
+//     console.log(res);
+//   } catch (err) {
+//     console.log(err);
+//   } finally {
+//     console.log("Always executing!");
+//   }
+// };
 
 // main();
 
 // CRUD
 // Create Read Update Delete
 
-const readFile = (fileName) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(fileName, "utf-8", (err, data) => {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
-};
+// readFile("test.txt")
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
 
-readFile("test.txt")
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
-
-const writeFile = (fileName, data) => {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(fileName, data, (err) => {
-      if (err) reject(err);
-      resolve();
-    });
-  });
-};
-
-writeFile("test.txt", "TEST FILE")
-  .then((res) => console.log("Success!"))
-  .catch((err) => console.log(err));
+// writeFile("test.txt", "TEST FILE")
+//   .then((res) => console.log("Success!"))
+//   .catch((err) => console.log(err));
 
 // Zadaca
 // 1. Napravete fajl read-write.js i preflete gi funkciite tamu
@@ -135,3 +117,19 @@ writeFile("test.txt", "TEST FILE")
 // 3. Napravete main funkcija vo koja ke ja procitate sodrzinata na data.txt
 // 4. Vo istata main funkcija zapisete vo data.txt vaseto ime i prezime
 // 5. Pokazete gi promenite
+
+const mainFunction = async () => {
+  try {
+    const read = await readFile("data.txt");
+    console.log("1.", read);
+
+    await writeFile("data.txt", "Vangel Hristov");
+
+    const readTwo = await readFile("data.txt");
+    console.log("2.", readTwo);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+mainFunction();
