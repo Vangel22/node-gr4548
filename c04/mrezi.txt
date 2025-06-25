@@ -1,0 +1,10 @@
+Ruter -> ISP (Internet Servis Provajder - Telekom, A1) 
+
+Prebaruvame google.com vo nasiot prebaruvac
+1. ISP e izvesten
+2. Proveruva vo negoviot cache (toa sto go ima na zaliha ili pak verzija od google), ako ima vrakja ako ne:
+3. TLD serveri (Top level domain)
+4. Root serveri (13 serveri vo cel svet)
+
+Nasite kompjuteri razbiraat brojki, a ne stringovi
+Zatoa google.com se mapira vo 192.168.20.10 (IP Adresa)
