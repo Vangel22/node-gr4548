@@ -1,6 +1,6 @@
 const http = require("http");
 
-const { convertMilesToKm } = require("./convert");
+const { convertMilesToKm, fahrenheitToCelsius } = require("./convert");
 
 // Klientot isprakja baranje (req)
 // Serverot vrakja odgovor (res)
@@ -9,7 +9,8 @@ const { convertMilesToKm } = require("./convert");
 // });
 
 const server = http.createServer((req, res) => {
-  // req.method
+  // req.method - HTTP methods
+  // req.url - Ruta kade se naogja resursot (soba vo kukja)
   if (req.method === "POST" && req.url === "/convert") {
     // POST ima req.body
 
@@ -47,11 +48,67 @@ const server = http.createServer((req, res) => {
     // 1. fahrenheitToCelsius vo convert.js
     // 2. sledete go istiot kod od pogore
     // 3. Ispratete baranje preku POSTMAN
+
+    let data = "";
+
+    req.on("data", (chunk) => {
+      console.log("chunk", chunk);
+
+      data += chunk;
+    });
+
+    req.on("end", () => {
+      const parsedData = JSON.parse(data);
+      console.log("parsed data", parsedData);
+
+      const convertedVal = fahrenheitToCelsius(parsedData.fahrenheit);
+
+      res.writeHead(200, { "content-type": "text/plain" });
+      res.end(
+        `${parsedData.fahrenheit} fahrenheit to celsius: ${convertedVal}`
+      );
+    });
   } else {
     res.end("I am lost...");
   }
 });
 
-server.listen(3000, () => console.log("Server started at port 3000!"));
+// Handler ili Controller e funkcijata koja se zanimava so spravuvanje so req, res
+const handler = (req, res) => {
+  if (req.url === "/home") {
+    res.end("Jas sum doma!");
+  }
+
+  // /sobiranje/2/2 -> 4
+  // /odzemanje/4/2 -> 2
+
+  // Se sto ima vo req.url e od tip string
+  const [_, op, num1, num2] = req.url.split("/");
+  const myUrl = req.url.split("/");
+  console.log("my url", myUrl); // ["", "sobiranje", "2", "2"];
+
+  let result;
+
+  switch (op) {
+    case "sobiranje":
+      result = Number(num1) + Number(num2);
+      // result = +num1++num2;
+      res.end(`${result}`);
+      break;
+    case "odzemanje":
+      result = Number(num1) - Number(num2);
+      // result = +num1++num2;
+      res.end(`${result}`);
+      break;
+    default:
+      res.end("Operacijata ne e prepoznaena!");
+      break;
+  }
+};
+
+const newServer = http.createServer(handler);
+newServer.listen(8080, () => console.log("Server started at port 8080!"));
+
+// server.listen(3000, () => console.log("Server started at port 3000!"));
 // http://127.0.0.1:3000/
 // http://localhost:3000/
