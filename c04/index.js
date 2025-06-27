@@ -8,6 +8,9 @@ const { convertMilesToKm, fahrenheitToCelsius } = require("./convert");
 //   res.end("Hello World!");
 // });
 
+// CRUD - Create Read Update Delete
+// HTTP - POST, GET, PUT, DELETE
+
 const server = http.createServer((req, res) => {
   // req.method - HTTP methods
   // req.url - Ruta kade se naogja resursot (soba vo kukja)
