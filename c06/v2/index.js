@@ -10,6 +10,10 @@ const {
 
 const app = express();
 
+// Dva tipovi na middleware
+// 1. Global
+// 2. Dedicated to route
+
 app.use(express.json()); // middleware
 
 app.get("/students", getAllStudents);

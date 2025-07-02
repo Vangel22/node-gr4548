@@ -7,6 +7,7 @@ const { read, write } = require("../read-write.js");
 
 const getAllStudents = async (req, res) => {
   const data = await read();
+
   res.status(200).send(data);
 };
 

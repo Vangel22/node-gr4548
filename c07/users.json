@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "ova ke bide prikazano samo sega za primer",
+        "name": "John",
+        "email": "john@mail.com",
+        "password": "test",
+        "role": "admin",
+        "username": "John22",
+        "createAt": "datum",
+        "updatedAt": "datum"
+    },
+    {
+        "name": "Jane",
+        "role": "user"
+    }
+]
