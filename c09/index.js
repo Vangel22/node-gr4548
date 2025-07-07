@@ -70,6 +70,28 @@ app.get("/", (req, res) => {
   res.render("index", data);
 });
 
+app.get("/studenti", (req, res) => {
+  const studenti = [
+    {
+      ime: "Risto",
+      prezime: "Ristov",
+      godini: 20,
+    },
+    {
+      ime: "Trpe",
+      prezime: "Trpevski",
+      godini: 21,
+    },
+    {
+      ime: "Aleksandar",
+      prezime: "Aleksandrov",
+      godini: 24,
+    },
+  ];
+
+  res.render("studenti", { studenti: studenti });
+});
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server started at port ${port}`);

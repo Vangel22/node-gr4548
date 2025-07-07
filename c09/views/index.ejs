@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include("partials/header", { firstname: ime, lastname: prezime }) %>
+
     <h3>Цело име: <%= ime %> <%= prezime %></h3>
 
     <% niza.forEach(grad => {%>
@@ -49,11 +51,9 @@
         <!-- Ova treba da bide dinamicno, t.e da ne si prikazuvaat poveke cekori od kolku sto ima -->
         <td>
           <ol>
-            <li><%= recept.method.firstStep %></li>
-            <li><%= recept.method.secondStep %></li>
-            <li><%= recept.method.thirdStep %></li>
-            <li><%= recept.method.fourthStep %></li>
-            <li><%= recept.method.fifthStep %></li>
+            <% for(let m in recept.method) {%>
+            <li><%= recept.method[m] %></li>
+            <% } %>
           </ol>
         </td>
       </tr>
