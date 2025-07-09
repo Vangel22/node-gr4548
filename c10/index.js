@@ -10,6 +10,8 @@ const app = express();
 
 // Kloniranje na repo node-gr4548
 
+// Dali go gledame ova?
+
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
