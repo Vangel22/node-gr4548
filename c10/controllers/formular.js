@@ -26,6 +26,7 @@ const getStudents = async (req, res) => {
 
 const deleteStudents = async (req, res) => {
   // req.query.index;
+  // Povikajte ja funkcijata remove koja ja definiravme
 };
 
 module.exports = {
