@@ -25,8 +25,11 @@ const getStudents = async (req, res) => {
 };
 
 const deleteStudents = async (req, res) => {
-  // req.query.index;
+  // req.query.index; e string, no go parsirame vo broj vo models/students.js -> remove()
   // Povikajte ja funkcijata remove koja ja definiravme
+
+  await studenti.remove(req.query.index);
+  res.redirect("/students");
 };
 
 module.exports = {
