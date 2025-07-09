@@ -8,6 +8,8 @@ const {
 
 const app = express();
 
+// Kloniranje na repo node-gr4548
+
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
